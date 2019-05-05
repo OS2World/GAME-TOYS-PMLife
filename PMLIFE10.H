@@ -1,0 +1,57 @@
+
+#define ID_RESOURCE      1
+#define IDD_NULL -1
+#define IDD_ABOUT        900
+#define IDD_SETDELAY     901
+#define IDD_SCROLLBAR    902
+#define IDD_ENTRYBOX     903
+#define IDD_SETPRTY      904
+#define IDD_FILELIST     905
+#define IDD_LISTBOX      906
+#define IDD_FORECOLOUR   908
+#define IDD_BACKCOLOUR   909
+#define IDD_COLOUR       910
+#define IDD_FOREBLACK    911
+#define IDD_FOREYELLOW   912
+#define IDD_FORECYAN     913
+#define IDD_FORERED      914
+#define IDD_FOREWHITE    915
+#define IDD_FOREGREY     916
+#define IDD_BACKBLACK    917
+#define IDD_BACKYELLOW   918
+#define IDD_BACKBLUE     919
+#define IDD_BACKMAGENTA  920
+#define IDD_BACKWHITE    921
+#define IDD_BACKGREY     922
+#define IDD_CELLVIEW     930
+#define IDD_ROTATE0      931
+#define IDD_ROTATE90     932
+#define IDD_ROTATE180    933
+#define IDD_ROTATE270    934
+#define IDD_MIRRORH      935
+#define IDD_MIRRORV      936
+#define IDD_INITCOLUMN   937
+#define IDD_INITROW      938
+#define IDD_FIELDSIZE    950
+#define IDD_LARGEFIELD   951
+#define IDD_MEDIUMFIELD  952
+#define IDD_SMALLFIELD   953
+#define IDD_FIELDWRAP    954
+
+#define IDM_LIFE 100
+#define IDM_INIT 101
+#define IDM_ADD  102
+#define IDM_START        103
+#define IDM_END  104
+#define IDM_OPTION       110
+#define IDM_SETDELAY     111
+#define IDM_ENLARGE      112
+#define IDM_SHRINK       113
+#define IDM_SETCOLOUR    114
+#define IDM_FIELDSIZE    115
+#define IDM_LOADSETTINGS 116
+#define IDM_SAVESETTINGS 117
+#define IDM_SAVEDEFSETTINGS 118
+#define IDM_ABOUT        120
+
+

@@ -1,0 +1,147 @@
+PMLIFE 1.0
+
+  This is an implemenataion of Conway's Life Game.  OS/2 2.0 (or the later 
+version) and Presentation Manager (PM) are requiered.  This is a 32-bit
+multithread application.
+
+0.  Archive contents
+  PMLIFE10.EXE  Excutable itself.
+  PMLIFE10.DOC  This file.
+  PMLIFE10.JPN  Japanese document (MS-Kanji encoded)
+  *.LIF         sample data
+  *.PAS         source files ( for Virtual Pascal/2 1.10 )
+  *.RC          source file ( resource )
+  *.h           source file ( included in resource )
+  *.ICO         source file ( icon )
+
+1.  Life Game
+  Conway's Life Game is a simple two-dimentional cell automation.
+  A two-dimentional field is devided into many "Cells" like a checker-
+board or Shogi(Chinese Chess)-board.  Every cell has alternatives of two
+kinds of state, which you can call 0/1 or Dead/Alive.  The fate of a cell
+is decided on the state of neighbouring 8 cells;
+
+  1 2 3
+  4 A 5
+  6 7 8
+
+  Every symbol ( 1, 2, ...8, and A) represents a distinct cell.  The time or
+generation has discrete value (T=0, 1, ... ).  If cell A is "Alive" and 2 or 3
+cells out of the eight bordering ones are "Alive" at generation [t], cell A 
+will remain "Alive"at the next generation [t+1].  If cell A is "Dead" and 3 cell
+s out of cell 1..8
+are "Alive", cell A will turn "Alive" at the next generation.  In the other
+cases cell A cannot survive and will turn "Dead" at the next generation.
+
+  In contrast to these simple conditions, Life Game shows amazingly complexed
+properties.  Run PMLIFE and start "RPENTO.LIF" and you can see houndreds of
+cells are born from just five cells.  If you get to be interested in Life Game,
+I will suggest you to read the reference books such as ;
+
+  THE RECURSIVE UNIVERSE by William Poundstone, 1985
+(Japanese translation : "LIFE GAME NO UCHU" by Makoto Arisawa, Nihon Hyoron Sha
+ 1990 ) 
+
+  Sorry, I read this in Japanse translation, so I do not know the original
+publisher X-).  Sample data included in this archive are described in this book.
+
+2. Capacity
+  In PMLIFE 1.0, you can choose a field size from 1024 x 1024, 512 x 512, or
+256 x 256 and the maximal "Alive" cell number is 10000.  Number of data file
+must be less than 100.
+
+3. Running PMLIFE
+
+ 1: Data Files
+      PMLIFE 1.0 requiers data files which define initial cell data. File
+    name must be "*.LIF".  Long file name can be used (except for multi-dotted
+    names), and these file must be in the same directory (folder) to
+    PMLIFE.EXE.
+
+ 2: Format of Data Files
+      An ASCII text file.  Please use your favourite editor to describe this.
+    Of course, OS/2 system editor (E.EXE) or EPM.EXE are enough to do it.
+      Length of every line cannot exceed 255.  Cell information lines must be
+    less than 446. "Alive" cells must be less than 1000.   
+
+    [Example] RPENTO.LIF     ... [explanation]
+    r Pentomino              ... Title.  Shown in the file selection listbox.
+    0 0                      ... X offset, Y offset.
+    comment line 1           |
+     ...                     |   Comment lines (no limitation 
+    comment line n           |   in line number)
+    BEGIN                    ... Indicates the beginning of cell information 
+                                 lines.
+    aa                       |   Cell information lines.
+    _aa                      |   <a> : alive. <->, <_>, space : dead.
+    _a                       |
+    [END OF FILE]
+
+      In setting X and Y offset, lower left angle of the windows is
+    (1, 1).  Value 0 means horizontal/vertical centre of the window. In sample
+    above, the upper left end of "r" shape is set to the centre of the 
+    window.  
+ 3: Menus
+    Li[F]e   : Running control
+      [I]nit    : Intialise the field and load a data file.
+      [A]dd     : load a data file and add the cells to the current field.
+      [S]tart   : Start/Restart running
+      [E]nd     : Stop running  
+      [Q]uit    : Quit the program. Alt+Q/Alt+X can be used too.
+
+    Init/Add menu :
+      Select loading file in the File Selection Listbox.  You can check the
+    Rotation Radiobuttons to change direction of the form.  If you want a
+    mirror-image, use the Reverse CheckBoxes. Values entered in the X/Y Offset
+    Entryboxes override the offset values described in the data file.
+      Add menu is useful to study interference of two or more figures.  For
+    instanse, please load FLYING.LIF (init menu) and add GGUN.LIF (add menu)
+    then start the game.  A flying machine moves from left to right with an
+    "afterburner".  This machine will be shot down by 'Gliders' ejected from
+    Glider gun.  Is this "attack" safe for the gun?
+
+    [O]ption : Running options
+      [D]elay   : Set running speed.
+      En[L]arge : Enlarge the display
+      Sh[R]ink  : Shrink the display
+      [C]olour  : Set colour
+      Field Size: Set field size and wrapping/no wrapping mode
+      Load      : Load a setting file
+      Save      : Save current setting into a file
+      Save as Default : Save current setting as program default
+
+    Delay manu    :
+      If delay value is non zero, DosSleep API is called at the end of the
+    generation.  Larger value, slower running.  The Idle Time Checkbox is set
+    at default (the calculation is done as a background task with almost no 
+    disturbance to other tasks).  Turning this off, its calculation thread 
+    runs at the regular priority (runs faster, using more CPU time 
+    resource).   
+
+4.  Free software
+  PMLIFE is a free software.  You may use and distribute this freely.  You may
+also reconstruct this.  However you MUST address what differences you made and
+who is the original auther.
+
+5.  Come on to Pascal PM Programming!
+  There are many OS/2-native Pascal compilers now.  In PMLIFE, I used Virtual
+Pascal for OS/2 from fPrint U.K.  That is a good compiler from which you can
+find every good things you experienced in Turbo Pascal.   There are other 
+Pascal compilers, Speed Pascal for OS/2 from SpeedSoft, TMT Pascal from TMT, 
+GNU Pascal compiler for EMX....
+  I include all source files of PMLIFE in this archive to show extended
+Pascal can be used in PM programming without deep knowledges and skill of
+C and PM.
+  Though Pascal may be an old tool, it could open the door to PM programming. 
+
+
+
+                         // Computer       //
+                         //  Aided         //
+                         //   Trivialities //
+
+                                               The Creative CAT 1995
+                                               CompuServe 100230,430
+                                               NiftyServe GHF03464
+                                               toda@med.niigata-u.ac.jp
+
